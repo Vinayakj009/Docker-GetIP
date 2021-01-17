@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+docker_cli_plugin_metadata() {
+	local vendor="Pianotrainer"
+	local url="https://donthaveone.com"
+	local description="Get the ip address of all running containers"
+	cat <<-EOF
+	{"SchemaVersion":"0.1.0","Vendor":"${vendor}","Version":"0.1.0","ShortDescription":"${description}","URL":"${url}"}
+EOF
+}
+
+case "$1" in
+	docker-cli-plugin-metadata)
+		docker_cli_plugin_metadata
+		;;
+	*)
+		exec docker inspect -f '{{.Name}}		{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}		{{.Id}}' $(docker container ls -aq);
+		;;
+esac
