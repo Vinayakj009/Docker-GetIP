@@ -1,3 +1,8 @@
+# Disclaimer!!!
+This is the first plugin I have ever created for docker. The plugin may not work as advertised. If you have not had training in using docker, please do not play around with this plugin.
+
+# Description
+
 This plugin adds the "getip" command to docker so that you can quickly get the ip addresses of your running containers.
 The plugin throws an error if there are no running containers.
 
